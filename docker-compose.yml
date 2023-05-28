@@ -23,9 +23,9 @@ services:
       - MEILI_HOST=http://meilisearch:7700
       - MEILI_HTTP_ADDR=meilisearch:7700
     volumes:
-      - /client/node_modules
-      - ./api:/api
-      - /api/node_modules
+      - /var/www/html/chatgpt/client/node_modules:/client/node_modules
+      - /var/www/html/chatgpt/api:/api
+      - /var/www/html/chatgpt/api/node_modules:/api/node_modules
 
   mongodb:
     container_name: chat-mongodb
