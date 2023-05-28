@@ -3,15 +3,14 @@ version: "3"
 services:
   api:
     container_name: chatgpt
-    expose: #This is used to map the container’s ports to the host machine.
+    expose:
       - 3080
     depends_on:
       - mongodb
-    # image: node-api # Comment this & uncomment below to build from docker hub image
+    image: node-api            # Comment this & uncomment below to build from docker hub image
     build:
       context: /var/www/html/chatgpt/
-      # target: node-api
-    # image: chatgptclone/app:latest # Uncomment this & comment above to build from docker hub image
+      target: node-api
     restart: always
     env_file:
       - /var/www/html/chatgpt/api/.env
@@ -23,9 +22,9 @@ services:
       - MEILI_HOST=http://meilisearch:7700
       - MEILI_HTTP_ADDR=meilisearch:7700
     volumes:
-      - /var/www/html/chatgpt/client/node_modules
-      - /var/www/html/chatgpt/api/:/api
-      - /var/www/html/chatgpt/api/node_modules
+      - /client/node_modules
+      - /var/www/html/chatgpt/api:/api
+      - /api/node_modules
 
   mongodb:
     container_name: chat-mongodb
