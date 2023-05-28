@@ -7,7 +7,7 @@ services:
       - 3080
     depends_on:
       - mongodb
-    image: node-api # Comment this & uncomment below to build from docker hub image
+    # image: node-api # Comment this & uncomment below to build from docker hub image
     build:
       context: /var/www/html/chatgpt/
       target: node-api
