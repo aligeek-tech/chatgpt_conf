@@ -34,7 +34,7 @@ services:
     image: mongo
     restart: always
     volumes:
-      - /var/www/html/config/data/data-node:/data/db
+      - /var/www/html/services_data/data/data-node:/data/db
     command: mongod --noauth
     environment:
       TZ: Asia/Tehran
@@ -50,7 +50,7 @@ services:
       - MEILI_HOST=http://meilisearch:7700
       - MEILI_HTTP_ADDR=meilisearch:7700
     volumes:
-      - /var/www/html/config/data/meili_data:/meili_data
+      - /var/www/html/services_data/data/meili_data:/meili_data
 
   chatgpt_v2:
     build:
