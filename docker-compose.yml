@@ -14,7 +14,7 @@ services:
     # image: chatgptclone/app:latest # Uncomment this & comment above to build from docker hub image
     restart: always
     env_file:
-      - ./api/.env
+      - /var/www/html/chatgpt/api/.env
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=production
@@ -45,7 +45,7 @@ services:
     ports:
       - 7700:7700
     env_file:
-      - ./api/.env
+      - /var/www/html/chatgpt/api/.env
     environment:
       - MEILI_HOST=http://meilisearch:7700
       - MEILI_HTTP_ADDR=meilisearch:7700
