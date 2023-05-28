@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: always
+    ports: #This is used to map the container’s ports to the host machine.
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./nginx/certificates/:/etc/ssl/
+      - ./nginx/log/:/var/log/nginx/
