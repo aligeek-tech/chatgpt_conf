@@ -22,10 +22,10 @@ services:
       # - CHATGPT_REVERSE_PROXY=http://host.docker.internal:8080/api/conversation # if you are hosting your own chatgpt reverse proxy
       - MEILI_HOST=http://meilisearch:7700
       - MEILI_HTTP_ADDR=meilisearch:7700
-    # volumes:
-      # - /client/node_modules
-      # - /var/www/html/chatgpt/api/:/api
-      # - /api/node_modules
+    volumes:
+      - /var/www/html/chatgpt/client/node_modules
+      - /var/www/html/chatgpt/api/:/api
+      - /var/www/html/chatgpt/api/node_modules
 
   mongodb:
     container_name: chat-mongodb
