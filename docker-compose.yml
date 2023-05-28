@@ -3,8 +3,8 @@ version: "3"
 services:
   api:
     container_name: chatgpt
-    ports: #This is used to map the container’s ports to the host machine.
-      - 3080:3080
+    expose: #This is used to map the container’s ports to the host machine.
+      - 3080
     depends_on:
       - mongodb
     image: node-api # Comment this & uncomment below to build from docker hub image
@@ -29,8 +29,8 @@ services:
 
   mongodb:
     container_name: chat-mongodb
-    ports:
-      - 27018:27017
+    expose:
+      - 27017
     image: mongo
     restart: always
     volumes:
@@ -42,8 +42,8 @@ services:
   meilisearch:
     container_name: chat-meilisearch
     image: getmeili/meilisearch:v1.0
-    ports:
-      - 7700:7700
+    expose:
+      - 7700
     env_file:
       - /var/www/html/chatgpt/api/.env
     environment:
@@ -58,7 +58,7 @@ services:
     container_name: chatgpt_v2
     restart: always
     expose: #This is used to map the container’s ports to the host machine.
-      - "3000"
+      - 3000
     environment:
       - "OPENAI_API_KEY=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"
 
