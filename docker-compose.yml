@@ -53,7 +53,7 @@ services:
 
   chatgptv2:
     build:
-      context: /var/www/html/chatgptv2/
+      context: /var/www/html/chatgpt_v2/
     container_name: chatgptv2
     restart: always
     expose: #This is used to map the container’s ports to the host machine.
