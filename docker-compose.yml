@@ -7,7 +7,7 @@ services:
       - 3080
     depends_on:
       - mongodb
-    image: node-api            # Comment this & uncomment below to build from docker hub image
+    image: node-api # Comment this & uncomment below to build from docker hub image
     build:
       context: /var/www/html/chatgpt/
       target: node-api
@@ -51,13 +51,13 @@ services:
     volumes:
       - /var/www/html/services_data/data/meili_data:/meili_data
 
-  chatgptv2:
+  nextapp:
     build:
       context: /var/www/html/chatgpt_v2/
     container_name: chatgptv2
     restart: always
-    expose: #This is used to map the container’s ports to the host machine.
-      - 3000
+    ports: #This is used to map the container’s ports to the host machine.
+      - "3000:3000"
     environment:
       - "OPENAI_API_KEY="
 
