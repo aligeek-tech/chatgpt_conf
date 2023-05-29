@@ -35,7 +35,7 @@ services:
     image: node-api # Comment this & uncomment below to build from docker hub image
     build:
       context: /var/www/html/chatgpt_v3/
-      target: node-api
+      target: node-api-orginal
     restart: always
     env_file:
       - /var/www/html/chatgpt_v3/api/.env
