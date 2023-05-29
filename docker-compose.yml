@@ -28,8 +28,8 @@ services:
 
   orginal:
     container_name: chatgptorginal
-    expose:
-      - 3080
+    ports:
+      - 3080:3080
     depends_on:
       - mongodb
     image: node-api # Comment this & uncomment below to build from docker hub image
