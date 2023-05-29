@@ -62,7 +62,7 @@ services:
       - "OPENAI_API_KEY="
 
   nginx:
-    image: nginx:alpine
+    image: nginx:stable-alpine3.17
     container_name: nginx
     restart: always
     ports: #This is used to map the container’s ports to the host machine.
