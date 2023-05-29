@@ -26,6 +26,31 @@ services:
       - /var/www/html/chatgpt/api:/api
       - /api/node_modules
 
+  orginal:
+    container_name: chatgptorginal
+    expose:
+      - 3080
+    depends_on:
+      - mongodb
+    image: node-api # Comment this & uncomment below to build from docker hub image
+    build:
+      context: /var/www/html/chatgpt_v3/
+      target: node-api
+    restart: always
+    env_file:
+      - /var/www/html/chatgpt_v3/api/.env
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongodb:27017/chatgpt-clone
+      # - CHATGPT_REVERSE_PROXY=http://host.docker.internal:8080/api/conversation # if you are hosting your own chatgpt reverse proxy
+      - MEILI_HOST=http://meilisearch:7700
+      - MEILI_HTTP_ADDR=meilisearch:7700
+    volumes:
+      - /client/node_modules
+      - /var/www/html/chatgpt_v3/api:/api
+      - /api/node_modules    
+
   mongodb:
     container_name: chat-mongodb
     expose:
@@ -56,8 +81,8 @@ services:
       context: /var/www/html/chatgpt_v2/
     container_name: nextapp
     restart: always
-    ports: #This is used to map the container’s ports to the host machine.
-      - "3000:3000"
+    expose: #This is used to map the container’s ports to the host machine.
+      - 3000
     env_file:
       - /var/www/html/chatgpt_v2/.env.local
 
