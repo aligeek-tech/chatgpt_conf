@@ -58,8 +58,6 @@ services:
     restart: always
     ports: #This is used to map the container’s ports to the host machine.
       - "3000:3000"
-    environment:
-      - "OPENAI_API_KEY="
 
   nginx:
     image: nginx:alpine
