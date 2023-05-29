@@ -54,7 +54,7 @@ services:
   nextapp:
     build:
       context: /var/www/html/chatgpt_v2/
-    container_name: chatgptv2
+    container_name: nextapp
     restart: always
     ports: #This is used to map the container’s ports to the host machine.
       - "3000:3000"
